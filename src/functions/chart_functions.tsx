@@ -10,3 +10,8 @@ export const addRow = (state:EDITOR_DATA_TYPE[], setState: React.Dispatch<React.
     setState([...state, {ID:state.slice(-1)[0].ID+1, Ability:0, Label:"", Vision:0}])
     return true
 }
+
+export const deleteRow = (row:EDITOR_DATA_TYPE, state:EDITOR_DATA_TYPE[], setState: React.Dispatch<React.SetStateAction<EDITOR_DATA_TYPE[]>>) => {
+    setState(state.filter(function(item:EDITOR_DATA_TYPE) {return item !== row}))
+    return true
+}
