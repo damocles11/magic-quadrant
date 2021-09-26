@@ -11,3 +11,7 @@ export type TABLE_BODY_TYPE = {
     data:EDITOR_DATA_TYPE[],
     setter:React.Dispatch<React.SetStateAction<EDITOR_DATA_TYPE[]>>
 }
+
+export type CONTAINER_PROPS_TYPE = {
+    chartData:EDITOR_DATA_TYPE[]
+}
