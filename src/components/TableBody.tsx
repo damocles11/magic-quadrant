@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import {EDITOR_DATA_TYPE, TABLE_BODY_TYPE} from "../types";
-import {changeValue} from "../functions/chart_functions";
+import {changeValue, addRow} from "../functions/chart_functions";
 
 function Chart(props: TABLE_BODY_TYPE) {
   return (
@@ -13,6 +13,7 @@ function Chart(props: TABLE_BODY_TYPE) {
               <td><input type='number' max={100} min={0} value={row.Vision} onChange={(change:ChangeEvent<HTMLInputElement>) => changeValue({...row, Vision:Number(change.target.value)}, props.data, props.setter)}/></td>
             </tr>)
       })}
+      <button className='AdditionButton' onClick={() => addRow(props.data, props.setter)}>Add Row</button>
       </tbody>
   );
 }

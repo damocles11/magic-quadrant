@@ -9,3 +9,15 @@
 table, th, td {
     border: 1px solid black;
 }
+
+.AdditionButton {
+    background-color: #282c34;
+    padding: 0.5vh 0.8vh;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor:pointer;
+}
