@@ -7,7 +7,7 @@ import '../style/Chart.css';
 import {addRow} from "../functions/chart_functions";
 
 function Container() {
-  const [editorData, setEditorData] = useState<EDITOR_DATA_TYPE[]>([{ID:1, Ability:35, Label:"default", Vision:12}]);
+  const [editorData, setEditorData] = useState<EDITOR_DATA_TYPE[]>([{ID:1, Ability:35, Label:"Default", Vision:12}]);
 
     useEffect(()=> {
         const previousState = localStorage.getItem('chartData')

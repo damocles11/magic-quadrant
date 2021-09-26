@@ -1,9 +1,15 @@
-.Container {
-    justify-content: center;
+.Container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.Chart {
+    float: left;
 }
 
 .EditorTable {
-
+    float: left;
 }
 
 table, th, td {

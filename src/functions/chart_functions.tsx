@@ -9,7 +9,7 @@ export const changeValue = (row:EDITOR_DATA_TYPE, state:EDITOR_DATA_TYPE[], setS
 }
 
 export const addRow = (state:EDITOR_DATA_TYPE[], setState: React.Dispatch<React.SetStateAction<EDITOR_DATA_TYPE[]>>) => {
-    const new_state = [...state, {ID:state.slice(-1)[0].ID+1, Ability:0, Label:"", Vision:0}]
+    const new_state = [...state, {ID:state.slice(-1)[0].ID+1, Ability:0, Label:"Default", Vision:0}]
     localStorage.setItem('chartData', JSON.stringify(new_state))
     setState(new_state)
     return true
