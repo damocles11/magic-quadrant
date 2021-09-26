@@ -5,20 +5,20 @@ import {changeValue} from "../functions/chart_functions";
 import Labels from './Labels'
 
 function Chart(props: TABLE_BODY_TYPE) {
-  const [useCoordinates, setUseCoordinates] = useState<DIV_COORDINATE_TYPE>(0)
-  const [divCoordinates, setDivCoordinates] = useState<HTMLElement | null>(document.getElementById('Chart'))
+  const [useCoordinates, setUseCoordinates] = useState<DIV_COORDINATE_TYPE>(0);
+  const [divCoordinates, setDivCoordinates] = useState<HTMLElement | null>(document.getElementById('Chart'));
 
-  const [draggedData, setDraggedData] = useState<EDITOR_DATA_TYPE>(props.data[0])
+  const [draggedData, setDraggedData] = useState<EDITOR_DATA_TYPE>(props.data[0]);
 
   useEffect(()=> {
       divCoordinates === null ? setDivCoordinates(document.getElementById('Chart')) :
-          setUseCoordinates((divCoordinates.getBoundingClientRect().top-divCoordinates.getBoundingClientRect().bottom))
+          setUseCoordinates((divCoordinates.getBoundingClientRect().top-divCoordinates.getBoundingClientRect().bottom));
   }, [divCoordinates])
 
   const handleDragEnter = (e: React.DragEvent<HTMLSpanElement>, data: EDITOR_DATA_TYPE) => {
       e.preventDefault();
       e.stopPropagation();
-      setDraggedData(data)
+      setDraggedData(data);
   };
   const handleDragOver = (e: React.DragEvent<HTMLSpanElement>) => {
       e.preventDefault();
@@ -27,9 +27,9 @@ function Chart(props: TABLE_BODY_TYPE) {
   const handleDrop = (e: React.DragEvent<HTMLSpanElement>) => {
       e.preventDefault();
       e.stopPropagation();
-      const vision:number = Math.floor(100-((e.pageY - Number(divCoordinates?.getBoundingClientRect()?.top)) * 100 / 400))
-      const ability:number = Math.floor(((e.pageX - Number(divCoordinates?.getBoundingClientRect()?.left)) * 100 / 400))
-      changeValue({...draggedData, Ability: ability, Vision: vision}, props.data, props.setter)
+      const vision:number = Math.floor(100-((e.pageY - Number(divCoordinates?.getBoundingClientRect()?.top)) * 100 / 400));
+      const ability:number = Math.floor(((e.pageX - Number(divCoordinates?.getBoundingClientRect()?.left)) * 100 / 400));
+      changeValue({...draggedData, Ability: ability, Vision: vision}, props.data, props.setter);
   };
 
   return (
