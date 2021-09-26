@@ -4,7 +4,7 @@ import {changeCoordinates} from "../functions/chart_functions";
 
 
 function Chart(props: TABLE_BODY_TYPE) {
-  const [coordinates, setCoordinates] = useState<CHART_COORDINATE_TYPE>({x:0,y:0})
+  const [mouseCoordinates, setMouseCoordinates] = useState<CHART_COORDINATE_TYPE>({x:0,y:0})
   const [useCoordinates, setUseCoordinates] = useState<DIV_COORDINATE_TYPE>(0)
   const [divCoordinates, setDivCoordinates] = useState<HTMLElement | null>(document.getElementById('Chart'))
 
@@ -14,10 +14,10 @@ function Chart(props: TABLE_BODY_TYPE) {
   }, [divCoordinates])
 
   return (
-    <div id='Chart' className='Chart' onMouseMove={(movement: React.MouseEvent<HTMLDivElement>) => changeCoordinates(movement, setCoordinates)}>
+    <div id='Chart' className='Chart' onMouseMove={(movement: React.MouseEvent<HTMLDivElement>) => changeCoordinates(movement, setMouseCoordinates)}>
         {props.data.map((data:EDITOR_DATA_TYPE) => {
-            return(<span key={data.ID} id="dot" className="dot" style={{bottom: ((useCoordinates*0.95)*(100-data.Ability))/100,
-                    right: (useCoordinates*0.96)-((useCoordinates*(100-data.Vision))/100)}}>
+            return(<span key={data.ID} id="dot" className="dot" style={{bottom: ((-(useCoordinates/100))*(data.Vision))*0.95,
+                    right: ((-(useCoordinates/100))*(100-data.Ability))*0.95}}>
                     <label htmlFor="dot" style={{bottom:-15,position:"relative"}}>{data.Label}</label></span>
             )
         })}
