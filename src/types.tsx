@@ -12,6 +12,7 @@ export type TABLE_BODY_TYPE = {
     setter:React.Dispatch<React.SetStateAction<EDITOR_DATA_TYPE[]>>
 }
 
-export type CONTAINER_PROPS_TYPE = {
-    chartData:EDITOR_DATA_TYPE[]
+export type CHART_COORDINATE_TYPE = {
+    x: number,
+    y: number
 }
