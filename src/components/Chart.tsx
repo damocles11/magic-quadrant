@@ -15,6 +15,8 @@ function Chart(props: TABLE_BODY_TYPE) {
 
   return (
     <div id='Chart' className='Chart' onMouseMove={(movement: React.MouseEvent<HTMLDivElement>) => changeCoordinates(movement, setMouseCoordinates)}>
+        <div style={{border: "2px solid lightgrey", position:"absolute", bottom: "50%", width:"99%"}}/>
+        <div style={{border: "2px solid lightgrey", position:"absolute", bottom: "50%", width:"99%", transform:"rotate(90deg)"}}/>
         {props.data.map((data:EDITOR_DATA_TYPE) => {
             return(<span key={data.ID} id="dot" className="dot" style={{bottom: ((-(useCoordinates/100))*(data.Vision))*0.95,
                     right: ((-(useCoordinates/100))*(100-data.Ability))*0.95}}>
