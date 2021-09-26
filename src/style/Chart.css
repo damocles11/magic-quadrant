@@ -14,6 +14,15 @@
     border: 2px solid darkgrey;
 }
 
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: darkblue;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
 .EditorTable {
     text-align: center;
     float: left;

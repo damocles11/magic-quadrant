@@ -16,3 +16,5 @@ export type CHART_COORDINATE_TYPE = {
     x: number,
     y: number
 }
+
+export type DIV_COORDINATE_TYPE = number
