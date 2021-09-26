@@ -67,3 +67,8 @@ table, th, td {
 .AdditionButton:hover {
     background-color: darkgrey;
 }
+
+input {
+    border: 2px solid darkgrey;
+    border-radius: 5px;
+}

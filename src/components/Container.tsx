@@ -20,7 +20,7 @@ function Container() {
             <tbody>
                 <tr className="AdditionButtonContainer">
                     <td>
-                        <button className='AdditionButton' onClick={() => addRow(editorData, setEditorData)}>Add Row</button>
+                        <button className='AdditionButton' onClick={() => addRow(editorData, setEditorData)}>Add</button>
                     </td>
                 </tr>
                 <tr className="EditorTableKeys">
