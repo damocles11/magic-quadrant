@@ -24,7 +24,17 @@
     position: absolute;
 }
 
+.DotLabel {
+    font-size: 13px;
+    font-family: sans-serif;
+    color: darkblue;
+    bottom:-15px;
+    position:relative;
+}
+
 .EditorTable {
+    justify-content: flex-start;
+    align-items: flex-start;
     text-align: center;
     float: left;
 }
