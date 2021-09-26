@@ -10,7 +10,7 @@ function Container() {
   const [editorData, setEditorData] = useState<EDITOR_DATA_TYPE[]>([{ID:1, Ability:35, Label:"Default", Vision:12}]);
 
     useEffect(()=> {
-        setEditorData(JSON.parse(String(localStorage.getItem('chartData'))))
+        setEditorData(JSON.parse(String(localStorage.getItem('chartData'))));
     }, [])
 
   return (
