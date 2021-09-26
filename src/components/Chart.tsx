@@ -1,26 +1,45 @@
 import React, {useState, useEffect} from 'react';
-import {CHART_COORDINATE_TYPE, DIV_COORDINATE_TYPE, EDITOR_DATA_TYPE, TABLE_BODY_TYPE} from "../types";
+import {DIV_COORDINATE_TYPE, EDITOR_DATA_TYPE, TABLE_BODY_TYPE} from "../types";
 
-import {changeCoordinates} from "../functions/chart_functions";
+import {changeValue} from "../functions/chart_functions";
 import Labels from './Labels'
 
 function Chart(props: TABLE_BODY_TYPE) {
-  const [mouseCoordinates, setMouseCoordinates] = useState<CHART_COORDINATE_TYPE>({x:0,y:0})
   const [useCoordinates, setUseCoordinates] = useState<DIV_COORDINATE_TYPE>(0)
   const [divCoordinates, setDivCoordinates] = useState<HTMLElement | null>(document.getElementById('Chart'))
+
+  const [draggedData, setDraggedData] = useState<EDITOR_DATA_TYPE>(props.data[0])
 
   useEffect(()=> {
       divCoordinates === null ? setDivCoordinates(document.getElementById('Chart')) :
           setUseCoordinates((divCoordinates.getBoundingClientRect().top-divCoordinates.getBoundingClientRect().bottom))
   }, [divCoordinates])
 
+  const handleDragEnter = (e: React.DragEvent<HTMLSpanElement>, data: EDITOR_DATA_TYPE) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setDraggedData(data)
+  };
+  const handleDragOver = (e: React.DragEvent<HTMLSpanElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+  };
+  const handleDrop = (e: React.DragEvent<HTMLSpanElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const vision:number = Math.floor(100-((e.pageY - Number(divCoordinates?.getBoundingClientRect()?.top)) * 100 / 400))
+      const ability:number = Math.floor(((e.pageX - Number(divCoordinates?.getBoundingClientRect()?.left)) * 100 / 400))
+      changeValue({...draggedData, Ability: ability, Vision: vision}, props.data, props.setter)
+  };
+
   return (
-    <div id='Chart' className='Chart' onMouseMove={(movement: React.MouseEvent<HTMLDivElement>) => changeCoordinates(movement, setMouseCoordinates)}>
+    <div id='Chart' className='Chart' onDragOver={e => handleDragOver(e)}
+         onDragLeave={e => handleDragOver(e)} onDrop={e => handleDrop(e)}>
         <Labels/>
         {props.data.map((data:EDITOR_DATA_TYPE) => {
-            return(<span key={data.ID} id="dot" className="dot" style={{bottom: ((-(useCoordinates/100))*(data.Vision))*0.95,
-                    right: ((-(useCoordinates/100))*(100-data.Ability))*0.95}}>
-                    <label htmlFor="dot" className="DotLabel">{data.Label}</label></span>
+            return(<span key={data.ID} id={String(data.ID)} className="dot" style={{bottom: ((-(useCoordinates/100))*(data.Vision))*0.95,
+                    right: ((-(useCoordinates/100))*(100-data.Ability))*0.95}} draggable={true} onDragEnter={e => handleDragEnter(e, data)}>
+                    <label htmlFor={String(data.ID)} className="DotLabel">{data.Label}</label></span>
             )
         })}
     </div>
