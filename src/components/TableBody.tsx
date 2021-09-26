@@ -1,8 +1,8 @@
 import React, {ChangeEvent} from 'react';
-import {EDITOR_DATA_TYPE} from "../types";
+import {EDITOR_DATA_TYPE, TABLE_BODY_TYPE} from "../types";
 import {changeValue} from "../functions/chart_functions";
 
-function Chart(props: {data:EDITOR_DATA_TYPE[], setter:React.Dispatch<React.SetStateAction<EDITOR_DATA_TYPE[]>>}) {
+function Chart(props: TABLE_BODY_TYPE) {
   return (
       <tbody>
       {props.data.map((row:EDITOR_DATA_TYPE) => {

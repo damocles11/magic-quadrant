@@ -1,8 +1,7 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState} from 'react';
 import Chart from './Chart';
 import TableBody from "./TableBody";
 
-import {changeValue} from '../functions/chart_functions';
 import {EDITOR_DATA_TYPE} from '../types';
 import '../style/Chart.css';
 
