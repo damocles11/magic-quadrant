@@ -15,10 +15,11 @@ function Chart(props: TABLE_BODY_TYPE) {
           setUseCoordinates((divCoordinates.getBoundingClientRect().top-divCoordinates.getBoundingClientRect().bottom));
   }, [divCoordinates])
 
-  const handleDragEnter = (e: React.DragEvent<HTMLSpanElement>, data: EDITOR_DATA_TYPE) => {
+  const handleDragEnter = async (e: React.DragEvent<HTMLSpanElement>, data: EDITOR_DATA_TYPE) => {
       e.preventDefault();
       e.stopPropagation();
-      setDraggedData(data);
+      //todo Bugfix
+      await setDraggedData(data);
   };
   const handleDragOver = (e: React.DragEvent<HTMLSpanElement>) => {
       e.preventDefault();

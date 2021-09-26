@@ -25,6 +25,10 @@
     cursor: grab;
 }
 
+.dot:active {
+    cursor: grabbing;
+}
+
 .DotLabel {
     font-size: 13px;
     font-family: sans-serif;
