@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import {EDITOR_DATA_TYPE, TABLE_BODY_TYPE} from "../types";
-import {changeValue, addRow, deleteRow} from "../functions/chart_functions";
+import {changeValue, deleteRow} from "../functions/chart_functions";
 
 function Chart(props: TABLE_BODY_TYPE) {
   return (
@@ -14,7 +14,6 @@ function Chart(props: TABLE_BODY_TYPE) {
               <td><button className='AdditionButton' onClick={() => deleteRow(row, props.data, props.setter)}>Delete</button></td>
             </tr>)
       })}
-      <tr><td><button className='AdditionButton' onClick={() => addRow(props.data, props.setter)}>Add Row</button></td></tr>
       </tbody>
   );
 }
