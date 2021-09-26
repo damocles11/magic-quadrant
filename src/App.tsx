@@ -1,6 +1,4 @@
 import React from 'react';
-import './style/App.css';
-
 import Container from './components/Container'
 
 function App() {
