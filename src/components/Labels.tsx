@@ -9,10 +9,10 @@ function Labels() {
         <div style={{border: "2px solid lightgrey", position:"absolute", bottom: "50%", width:"99%"}}/>
         <div style={{border: "2px solid lightgrey", position:"absolute", bottom: "50%", width:"99%", transform:"rotate(90deg)"}}/>
 
-        <div style={{position:"absolute", bottom:"1%", left:"12.5%", color:"white", backgroundColor:"darkgrey", borderRadius:"3px"}}>Niche Players</div>
-        <div style={{position:"absolute", bottom:"1%", left:"65%", color:"white", backgroundColor:"darkgrey", borderRadius:"3px"}}>Visionaries</div>
-        <div style={{position:"absolute", bottom:"94%", left:"15%", color:"white", backgroundColor:"darkgrey", borderRadius:"3px"}}>Challengers</div>
-        <div style={{position:"absolute", bottom:"94%", left:"67.5%", color:"white", backgroundColor:"darkgrey", borderRadius:"3px"}}>Leaders</div>
+        <div className='InsideLabels' style={{bottom:"1%", left:"12.5%"}}>Niche Players</div>
+        <div className='InsideLabels' style={{bottom:"1%", left:"65%"}}>Visionaries</div>
+        <div className='InsideLabels' style={{bottom:"94%", left:"15%"}}>Challengers</div>
+        <div className='InsideLabels' style={{bottom:"94%", left:"67.5%"}}>Leaders</div>
     </div>
   );
 }

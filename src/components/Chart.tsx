@@ -15,11 +15,10 @@ function Chart(props: TABLE_BODY_TYPE) {
           setUseCoordinates((divCoordinates.getBoundingClientRect().top-divCoordinates.getBoundingClientRect().bottom));
   }, [divCoordinates])
 
-  const handleDragEnter = async (e: React.DragEvent<HTMLSpanElement>, data: EDITOR_DATA_TYPE) => {
+  const handleDragEnter = (e: React.DragEvent<HTMLSpanElement>, data: EDITOR_DATA_TYPE) => {
       e.preventDefault();
       e.stopPropagation();
-      //todo Bugfix
-      await setDraggedData(data);
+      setDraggedData(data);
   };
   const handleDragOver = (e: React.DragEvent<HTMLSpanElement>) => {
       e.preventDefault();
@@ -38,8 +37,10 @@ function Chart(props: TABLE_BODY_TYPE) {
          onDragLeave={e => handleDragOver(e)} onDrop={e => handleDrop(e)}>
         <Labels/>
         {props.data.map((data:EDITOR_DATA_TYPE) => {
-            return(<span key={data.ID} id={String(data.ID)} className="dot" style={{bottom: ((-(useCoordinates/100))*(data.Vision))*0.95,
-                    right: ((-(useCoordinates/100))*(100-data.Ability))*0.95}} draggable={true} onDragEnter={e => handleDragEnter(e, data)}>
+            const [bottom,right] = [((-(useCoordinates/100))*(data.Vision))*0.95, ((-(useCoordinates/100))*(100-data.Ability))*0.95]
+
+            return(<span key={data.ID} id={String(data.ID)} className="dot" style={{bottom: bottom, right: right}}
+                         draggable={true} onDrag={e => {handleDragEnter(e,data)}}>
                     <label htmlFor={String(data.ID)} className="DotLabel">{data.Label}</label></span>
             )
         })}

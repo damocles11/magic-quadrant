@@ -76,3 +76,10 @@ input {
     border: 2px solid darkgrey;
     border-radius: 5px;
 }
+
+.InsideLabels {
+    position:absolute;
+    color:white;
+    background-color:darkgrey;
+    border-radius:3px;
+}
