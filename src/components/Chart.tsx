@@ -8,8 +8,6 @@ function Chart(props: TABLE_BODY_TYPE) {
   const [useCoordinates, setUseCoordinates] = useState<DIV_COORDINATE_TYPE>(0);
   const [divCoordinates, setDivCoordinates] = useState<HTMLElement | null>(document.getElementById('Chart'));
 
-  const [draggedData, setDraggedData] = useState<EDITOR_DATA_TYPE | null>(props.data ? props.data[0] : null);
-
   useEffect(()=> {
       divCoordinates === null ? setDivCoordinates(document.getElementById('Chart')) :
           setUseCoordinates((divCoordinates.getBoundingClientRect().top-divCoordinates.getBoundingClientRect().bottom));
@@ -18,10 +16,9 @@ function Chart(props: TABLE_BODY_TYPE) {
   const handleDragEnter = (e: React.DragEvent<HTMLSpanElement>, data: EDITOR_DATA_TYPE) => {
       e.preventDefault();
       e.stopPropagation();
-      setDraggedData(data);
       const vision:number = Math.floor(100-((e.pageY - Number(divCoordinates?.getBoundingClientRect()?.top)) * 100 / 400));
       const ability:number = Math.floor(((e.pageX - Number(divCoordinates?.getBoundingClientRect()?.left)) * 100 / 400));
-      if(draggedData) changeValue({...draggedData, Ability: ability, Vision: vision}, props.data, props.setter)
+      if(data) changeValue({...data, Ability: ability, Vision: vision}, props.data, props.setter)
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLSpanElement>) => {
@@ -40,8 +37,8 @@ function Chart(props: TABLE_BODY_TYPE) {
             return(
                 <span key={data.ID} id={String(data.ID)} className="dot" style={{bottom: bottom, right: right, opacity: data.checked ?  1 : 0.3}}
                          draggable={true} onDrag={e => {handleDragEnter(e,data)}}>
-                    <div style={{border: "2px dashed red", position:"absolute", width:right, transform:"rotate(deg)", left:15, top: 5}}/>
-                    <div style={{border: "2px dashed red", position:"absolute", width:Number(bottom), transform:"rotate(90deg)", transformOrigin: "top left", left:15, top: 5}}/>
+                    <div style={{border: "1px dashed red", position:"absolute", width:right, transform:"rotate(deg)", left:15, top: 5}}/>
+                    <div style={{border: "1px dashed red", position:"absolute", width:Number(bottom), transform:"rotate(90deg)", transformOrigin: "top left", left:15, top: 5}}/>
                     <label htmlFor={String(data.ID)} className="DotLabel">{data.Label}</label></span>
             )
         })}
