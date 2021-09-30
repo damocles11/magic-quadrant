@@ -24,6 +24,7 @@ function Container() {
                     </td>
                 </tr>
                 <tr className="EditorTableKeys">
+                    <td>Check</td>
                     <td>Label</td>
                     <td>Vision</td>
                     <td>Ability</td>
