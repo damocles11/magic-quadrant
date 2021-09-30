@@ -41,7 +41,7 @@ function Chart(props: TABLE_BODY_TYPE) {
                 <span key={data.ID} id={String(data.ID)} className="dot" style={{bottom: bottom, right: right, opacity: data.checked ?  1 : 0.3}}
                          draggable={true} onDrag={e => {handleDragEnter(e,data)}}>
                     <div style={{border: "2px dashed red", position:"absolute", width:right, transform:"rotate(deg)", left:15, top: 5}}/>
-                    <div style={{border: "2px dashed red", width:Number(bottom), transform:"rotate(90deg)", transformOrigin: "top left"}}/>
+                    <div style={{border: "2px dashed red", position:"absolute", width:Number(bottom), transform:"rotate(90deg)", transformOrigin: "top left", left:15, top: 5}}/>
                     <label htmlFor={String(data.ID)} className="DotLabel">{data.Label}</label></span>
             )
         })}
