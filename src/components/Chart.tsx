@@ -39,7 +39,7 @@ function Chart(props: TABLE_BODY_TYPE) {
         {props?.data?.map((data:EDITOR_DATA_TYPE) => {
             const [bottom,right] = [((-(useCoordinates/100))*(data.Vision))*0.95, ((-(useCoordinates/100))*(100-data.Ability))*0.95]
 
-            return(<span key={data.ID} id={String(data.ID)} className="dot" style={{bottom: bottom, right: right}}
+            return(<span key={data.ID} id={String(data.ID)} className="dot" style={{bottom: bottom, right: right, opacity: data.checked ?  0.3 : 1}}
                          draggable={true} onDrag={e => {handleDragEnter(e,data)}}>
                     <label htmlFor={String(data.ID)} className="DotLabel">{data.Label}</label></span>
             )
