@@ -5,6 +5,7 @@ export type EDITOR_DATA_TYPE = {
     Label: string,
     Vision: number,
     Ability: number,
+    checked: boolean
 }
 
 export type TABLE_BODY_TYPE = {
