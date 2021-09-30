@@ -19,22 +19,20 @@ function Chart(props: TABLE_BODY_TYPE) {
       e.preventDefault();
       e.stopPropagation();
       setDraggedData(data);
-  };
-  const handleDragOver = (e: React.DragEvent<HTMLSpanElement>) => {
-      e.preventDefault();
-      e.stopPropagation();
-  };
-  const handleDrop = (e: React.DragEvent<HTMLSpanElement>) => {
-      e.preventDefault();
-      e.stopPropagation();
       const vision:number = Math.floor(100-((e.pageY - Number(divCoordinates?.getBoundingClientRect()?.top)) * 100 / 400));
       const ability:number = Math.floor(((e.pageX - Number(divCoordinates?.getBoundingClientRect()?.left)) * 100 / 400));
       if(draggedData) changeValue({...draggedData, Ability: ability, Vision: vision}, props.data, props.setter)
   };
 
+  const handleDragOver = (e: React.DragEvent<HTMLSpanElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+  };
+
+
   return (
     <div id='Chart' className='Chart' onDragOver={e => handleDragOver(e)}
-         onDragLeave={e => handleDragOver(e)} onDrop={e => handleDrop(e)}>
+         onDragLeave={e => handleDragOver(e)}>
         <Labels/>
         {props?.data?.map((data:EDITOR_DATA_TYPE) => {
             const [bottom,right] = [((-(useCoordinates/100))*(data.Vision))*0.95, ((-(useCoordinates/100))*(100-data.Ability))*0.95]
